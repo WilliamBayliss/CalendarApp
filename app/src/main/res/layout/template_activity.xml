@@ -1,10 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/templateRecyclerView"
-    tools:context=".TemplateActivity">
+    android:id="@+id/template_activity"
+    tools:context=".TemplateActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center"
+        android:id="@+id/newTemplateTextView"
+        android:text="New Template"
+        android:textSize="23dp"
+        android:paddingTop="16dp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/templateTitleLayout" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Event Title: "
+            android:id="@+id/titleInputTextView"
+            android:textSize="18dp"
+            android:layout_weight="0"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"/>
+
+        <EditText
+            android:layout_width="215dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:width="150dp"
+            android:paddingLeft="25dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/templateStartTimeLayout" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="From: "
+            android:id="@+id/fromTimeTextView"
+            android:textSize="18dp"
+            android:layout_weight="0"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"/>
+
+        <TimePicker
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/fromTimePicker"
+            android:timePickerMode="spinner"/>
+    </LinearLayout>
 
 
-</androidx.recyclerview.widget.RecyclerView>
+</LinearLayout>
