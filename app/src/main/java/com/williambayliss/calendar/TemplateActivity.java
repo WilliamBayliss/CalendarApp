@@ -12,8 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class TemplateActivity extends AppCompatActivity {
     TextView titleTextView;
-    TextView fromTextView;
-    TextView titleInputTextView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -22,8 +20,6 @@ public class TemplateActivity extends AppCompatActivity {
         setContentView(R.layout.template_activity);
 
         titleTextView = findViewById(R.id.newTemplateTextView);
-        fromTextView = findViewById(R.id.fromTimeTextView);
-        titleInputTextView = findViewById(R.id.titleInputTextView);
 
     }
 }

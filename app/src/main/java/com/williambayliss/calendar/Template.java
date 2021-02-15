@@ -10,8 +10,12 @@ public class Template {
     public int id;
     @ColumnInfo(name = "Title")
     public String title;
+    @ColumnInfo(name = "Location")
+    public String location;
     @ColumnInfo(name = "Start Time")
     public int startTime;
     @ColumnInfo(name = "End Time")
     public int endTime;
+    @ColumnInfo(name = "Alert Type")
+    public String alertType;
 }

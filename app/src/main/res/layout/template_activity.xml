@@ -16,52 +16,72 @@
         android:textSize="23dp"
         android:paddingTop="16dp"/>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <EditText
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:id="@+id/templateTitleLayout" >
+        android:id="@+id/eventTitleEditText"
+        android:hint="Event Title" />
 
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/eventLocationEditText"
+        android:hint="Location" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="25dp"
+        android:orientation="horizontal" >
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Event Title: "
-            android:id="@+id/titleInputTextView"
             android:textSize="18dp"
+            android:layout_marginLeft="10dp"
             android:layout_weight="0"
-            android:paddingLeft="25dp"
-            android:paddingRight="25dp"/>
+            android:text="From:" />
 
-        <EditText
-            android:layout_width="215dp"
-            android:layout_height="wrap_content"
+        <TextView
+            android:layout_width="79dp"
+            android:layout_height="match_parent"
+            android:textSize="18dp"
+            android:layout_marginLeft="160dp"
             android:layout_weight="0"
-            android:width="150dp"
-            android:paddingLeft="25dp" />
+            android:text="Until:" />
+
     </LinearLayout>
-
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:id="@+id/templateStartTimeLayout" >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="From: "
-            android:id="@+id/fromTimeTextView"
-            android:textSize="18dp"
-            android:layout_weight="0"
-            android:paddingLeft="25dp"
-            android:paddingRight="25dp"/>
+        android:id="@+id/startEndTimesGetter" >
 
         <TimePicker
+            android:layout_width="233dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="-30dp"
+            android:layout_weight="0"
+            android:id="@+id/fromTimeSpinner"
+            android:scaleX="0.7"
+            android:scaleY="0.7"
+            android:timePickerMode="spinner" />
+
+        <TimePicker
+            android:id="@+id/untilTimeSpinner"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/fromTimePicker"
-            android:timePickerMode="spinner"/>
+            android:layout_height="match_parent"
+            android:layout_marginLeft="-30dp"
+            android:layout_weight="0"
+            android:scaleX="0.7"
+            android:scaleY="0.7"
+            android:timePickerMode="spinner" />
     </LinearLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Alerts"
+        android:textSize="18dp"
+        android:layout_marginLeft="10dp"/>
 
 
 </LinearLayout>
