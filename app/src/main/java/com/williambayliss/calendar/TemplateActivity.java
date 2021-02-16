@@ -3,6 +3,7 @@ package com.williambayliss.calendar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -21,6 +22,7 @@ public class TemplateActivity extends AppCompatActivity {
     String fromTime;
     String untilTime;
     Button alertsButton;
+    String alertType;
     Button saveButton;
 
 
@@ -35,6 +37,7 @@ public class TemplateActivity extends AppCompatActivity {
         fromTimeSpinner = findViewById(R.id.fromTimeSpinner);
         untilTimeSpinner = findViewById(R.id.untilTimeSpinner);
         alertsButton = findViewById(R.id.alertsButton);
+        alertType = "Time of Event";
         saveButton = findViewById(R.id.saveButton);
 
         fromTimeSpinner.setIs24HourView(true);
@@ -65,6 +68,25 @@ public class TemplateActivity extends AppCompatActivity {
 
             }
         });
-    }
+        alertsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                TODO
+            }
+        });
 
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                saveTemplate();
+            }
+        });
+    }
+    private void saveTemplate(){
+        String title = eventTitle.getText().toString();
+        String location = eventLocation.getText().toString();
+        MainActivity.templateDatabase.templateDao().create(title, location, fromTime, untilTime, alertType);
+        finish();
+
+    }
 }

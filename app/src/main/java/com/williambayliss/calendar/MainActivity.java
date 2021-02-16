@@ -3,6 +3,7 @@ package com.williambayliss.calendar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     Button newEventButton;
     Button newTemplateButton;
     Button settingsButton;
+    public static TemplateDatabase templateDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +30,9 @@ public class MainActivity extends AppCompatActivity {
         newTemplateButton = findViewById(R.id.newTemplateButton);
         settingsButton = findViewById(R.id.settingsButton);
 
+        templateDatabase = Room.databaseBuilder(getApplicationContext(), TemplateDatabase.class, "templates")
+                .allowMainThreadQueries()
+                .build();
         newTemplateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
