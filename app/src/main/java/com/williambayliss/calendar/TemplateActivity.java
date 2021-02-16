@@ -16,10 +16,14 @@ import androidx.recyclerview.widget.RecyclerView;
 public class TemplateActivity extends AppCompatActivity {
     EditText eventTitle;
     EditText eventLocation;
-    TimePicker fromTime;
-    TimePicker untilTime;
+    TimePicker fromTimeSpinner;
+    TimePicker untilTimeSpinner;
+    String fromTime;
+    String untilTime;
     Button alertsButton;
     Button saveButton;
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,13 +32,39 @@ public class TemplateActivity extends AppCompatActivity {
 
         eventTitle = findViewById(R.id.eventTitleEditText);
         eventLocation = findViewById(R.id.eventLocationEditText);
-        fromTime = findViewById(R.id.fromTimeSpinner);
-        untilTime = findViewById(R.id.untilTimeSpinner);
+        fromTimeSpinner = findViewById(R.id.fromTimeSpinner);
+        untilTimeSpinner = findViewById(R.id.untilTimeSpinner);
         alertsButton = findViewById(R.id.alertsButton);
         saveButton = findViewById(R.id.saveButton);
 
+        fromTimeSpinner.setIs24HourView(true);
+        untilTimeSpinner.setIs24HourView(true);
 
+        fromTimeSpinner.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
+            @Override
+            public void onTimeChanged(TimePicker timePicker, int hour, int minute) {
+                String AMPM = "AM";
+                if (hour > 11) {
+                    hour = hour - 12;
+                    AMPM = "PM";
+                }
+                fromTime = "" + hour + ":" + minute + AMPM;
 
+            }
+        });
 
+        untilTimeSpinner.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
+            @Override
+            public void onTimeChanged(TimePicker timePicker, int hour, int minute) {
+                String AMPM = "AM";
+                if (hour > 11) {
+                    hour = hour - 12;
+                    AMPM = "PM";
+                }
+                untilTime = "" + hour + ":" + minute + AMPM;
+
+            }
+        });
     }
+
 }
