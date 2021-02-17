@@ -94,6 +94,4 @@ public class TemplateActivity extends AppCompatActivity {
 
     }
 
-    private void showPopUpMenu(View view) {
-    }
 }
