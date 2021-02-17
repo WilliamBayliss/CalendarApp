@@ -2,19 +2,15 @@ package com.williambayliss.calendar;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.PopupMenu;
-import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
 public class TemplateActivity extends AppCompatActivity {
     EditText eventTitle;
@@ -39,7 +35,6 @@ public class TemplateActivity extends AppCompatActivity {
         fromTimeSpinner = findViewById(R.id.fromTimeSpinner);
         untilTimeSpinner = findViewById(R.id.untilTimeSpinner);
         alertsButton = findViewById(R.id.alertsButton);
-        alertType = "Time of Event";
         saveButton = findViewById(R.id.saveButton);
 
         fromTimeSpinner.setIs24HourView(true);
@@ -74,6 +69,13 @@ public class TemplateActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 PopupMenu popup = new PopupMenu(getApplicationContext(), view);
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        onMenuItemOptionClick(menuItem);
+                        return false;
+                    }
+                });
                 popup.inflate(R.menu.popup_menu);
                 popup.show();
             }
@@ -86,6 +88,7 @@ public class TemplateActivity extends AppCompatActivity {
             }
         });
     }
+
     private void saveTemplate(){
         String title = eventTitle.getText().toString();
         String location = eventLocation.getText().toString();
@@ -94,4 +97,29 @@ public class TemplateActivity extends AppCompatActivity {
 
     }
 
+    public boolean onMenuItemOptionClick(MenuItem item) {
+        Toast.makeText(this, "Selected item: " + item.getTitle(), Toast.LENGTH_SHORT).show();
+        switch (item.getItemId()) {
+            case R.id.timeOfEvent:
+                alertType = "At time of event";
+                return true;
+            case R.id.fiveMinsBeforeEvent:
+                alertType = "Five minutes before event";
+                return true;
+            case R.id.halfHourBeforeEvent:
+                alertType = "Thirty minutes before event";
+                return true;
+            case R.id.hourBeforeEvent:
+                alertType = "One hour before event";
+                return true;
+            case R.id.oneDayBeforeEvent:
+                alertType = "One day before event";
+                return true;
+            case R.id.oneWeekBeforeEvent:
+                alertType = "One week before event";
+                return true;
+            default:
+                return false;
+        }
+    }
 }

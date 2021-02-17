@@ -13,9 +13,9 @@ public class Template {
     @ColumnInfo(name = "Location")
     public String location;
     @ColumnInfo(name = "Start Time")
-    public int startTime;
+    public String startTime;
     @ColumnInfo(name = "End Time")
-    public int endTime;
+    public String endTime;
     @ColumnInfo(name = "Alert Type")
     public String alertType;
 }
