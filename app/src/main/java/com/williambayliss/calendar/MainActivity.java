@@ -1,5 +1,6 @@
 package com.williambayliss.calendar;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
@@ -41,10 +42,22 @@ public class MainActivity extends AppCompatActivity {
                 startNewTemplate();
             }
         });
+
+        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
+                launchDayView();
+            }
+        });
     }
 
     public void startNewTemplate() {
         Intent intent = new Intent(this, TemplateActivity.class);
+        startActivity(intent);
+    }
+
+    public void launchDayView() {
+        Intent intent = new Intent(this, DayViewActivity.class);
         startActivity(intent);
     }
 }
