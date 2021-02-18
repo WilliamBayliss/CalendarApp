@@ -11,11 +11,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
 
+import java.util.Calendar;
 import java.util.EventListener;
 
 public class MainActivity extends AppCompatActivity {
     ConstraintLayout layout;
     CalendarView calendarView;
+    Calendar userCalendar;
     Button newEventButton;
     Button newTemplateButton;
     Button settingsButton;
